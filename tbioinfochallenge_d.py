@@ -65,16 +65,16 @@ def get_annotations(vcff):
 	Tdepth = samplelist[4].strip("\n")
 
 	#reads supporting the variant, assuming NV from FORMAT however I did friends
-    #literature on support meaning forward+reverse strand coverage
+	#literature on support meaning forward+reverse strand coverage
 	varReads = samplelist[5].strip("\n")
 
 	#variant/reference read percentages assuming if not variant read then ref read
 	'''
 	revisit this area, e.g. line 41 (not couting meta) of VCF has multiple ALTs
-    therefore there are multiple varReads and Tdepth vals. This is a common
-    shortcoming of VCF files and preprocessing should include spliting the
-    record by all ALTs. Based on ValueError, 35 records total with multiple ALTs
-    in current VCF
+	therefore there are multiple varReads and Tdepth vals. This is a common
+	shortcoming of VCF files and preprocessing should include spliting the
+	record by all ALTs. Based on ValueError, 35 records total with multiple ALTs
+	in current VCF
 	'''
 	try:
 
@@ -89,16 +89,16 @@ def get_annotations(vcff):
 		varPercent = "valerr"
 
 	''' INCOMPLETE PARTS OF ASSIGNMENT
-    #4 VEP API..... not sure how to hand over a region from my VCF file to get
-    the values I want back but I'm assuming I can hand the API a position and
-    the ref/alt bases because vcf doesnt provide ID
+	#4 VEP API..... not sure how to hand over a region from my VCF file to get
+	the values I want back but I'm assuming I can hand the API a position and
+	the ref/alt bases because vcf doesnt provide ID
 
-    pasted from ensembl for reference
-    ###
-    https://rest.ensembl.org/documentation/info/vep_region_post
+	pasted from ensembl for reference
+	###
+	https://rest.ensembl.org/documentation/info/vep_region_post
 
-    #5 minor allele freq. was not sure how to tackle this one.
-    '''
+	#5 minor allele freq. was not sure how to tackle this one.
+	'''
 
     #place holders for values
 	Gene = "NULL"
