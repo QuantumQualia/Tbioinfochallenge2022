@@ -13,7 +13,7 @@ VCF file formatting created a couple of hurdles in that each record did not repr
 This part of the script threw me for a loop as I wasn't able to dicern how to extract a region to use the API. The NULLS in the annoated VCF file are placeholders for Gene,Type, and Effect
 
 #### Larger File Sizes
-Even though VCF files are in a semi compressed(~100gb) in comparison to GFF files for example, handling multiple files or larger ones may be demanding depending on the resources of your local machine ([BCFs](https://samtools.github.io/bcftools/howtos/index.html) are compressed versions of VCFs and there are approaches to handling those as well). In this techincal challenge I did not run into that issue but without access to large parallelization one might need to split the files into smaller chunks for processing.
+Even though VCF files are in a semi compressed(~100gb) in comparison to GFF files for example, handling multiple files or larger ones may be demanding depending on the resources of your local machine ([BCFs](https://samtools.github.io/bcftools/howtos/index.html) are compressed versions of VCFs and there are approaches to handling those as well). In this techincal challenge I did not run into that issue but without access to large parallelization infrastructure one might need to split the files into smaller chunks for processing.
 
 ## Installation
 At least Python3.6 is required due to f-String usage.
