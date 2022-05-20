@@ -27,4 +27,4 @@ python3 pathto/tbioinfochallenge_d.py -i 'pathto/test_vcf_data.txt' -o 'pathto/o
 ```
 
 ## Credits
-Thanks to Tempus for allowing me to take a stab at a fun problem even though I didn't complete it fully I learned a big on the way.
+Thanks to the Bioinformatics team at Tempus for allowing me to take a stab at a fun problem even though I didn't complete it fully I learned a big on the way.
