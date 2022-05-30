@@ -10,7 +10,7 @@ Python is commonly used in the bioinformatics space and was familiar to me so it
 VCF file formatting created a couple of hurdles in that each record did not represent a single variant, sometimes records are shared by variants thus producing minor challenges to basic parsing techniques. I was not able to fully handle the complexity but created a solution that allowed me to process the majority of the data provided in the time I was alloted. 
 
 #### VEP API Utilization
-This part of the script threw me for a loop as I wasn't able to dicern how to extract a region to use the API. The NULLS in the annoated VCF file are placeholders for Gene,Type, and Effect
+This part of the script threw me for a loop as I wasn't able to dicern how to extract a region to use the API. The NULLS in the annoated VCF file are placeholders for Gene,Type, and Effect. Update: I was missing the understandinf of HGVS formatting thus I could not utilize the API fully. After diving into https://varnomen.hgvs.org/ this is common knownledge in the field that I didn't have so let's see where that gets me.
 
 #### Larger File Sizes
 Even though VCF files are in a semi compressed(~100gb) in comparison to GFF files for example, handling multiple files or larger ones may be demanding depending on the resources of your local machine ([BCFs](https://samtools.github.io/bcftools/howtos/index.html) are compressed versions of VCFs and there are approaches to handling those as well). In this techincal challenge I did not run into that issue but without access to large parallelization infrastructure one might need to split the files into smaller chunks for processing.
