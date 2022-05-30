@@ -92,6 +92,8 @@ def get_annotations(vcff):
 	#4 VEP API..... not sure how to hand over a region from my VCF file to get
 	the values I want back but I'm assuming I can hand the API a position and
 	the ref/alt bases because vcf doesnt provide ID
+	Figured this out tentatively. It was due to my lack of domain knowledge for the format of HGVS-nomenclature.
+	https://varnomen.hgvs.org/ was very helpful.
 
 	pasted from ensembl for reference
 	###
