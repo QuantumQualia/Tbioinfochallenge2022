@@ -9,10 +9,10 @@ Author: duy
 
 '''
 
-import sys
-import requests
+import requests, sys
 import argparse
 import os.path
+from pprint import pprint
 
 '''
 #IDEA create list of files to initiate batch preprocessing or if file needs to
@@ -101,6 +101,21 @@ def get_annotations(vcff):
 
 	#5 minor allele freq. was not sure how to tackle this one.
 	'''
+
+#gettting single
+server = "https://grch37.rest.ensembl.org" #not most recent assembly is the one we are referencing
+ext = "/vep/human/hgvs"
+headers={ "Content-Type" : "application/json", "Accept" : "application/json"}
+r = requests.post(server+ext, headers=headers, data='{ "hgvs_notations" : ["NC_000001.10:g.12776344A>T"] }') #single entry from test data for testing 
+ 
+if not r.ok:
+  r.raise_for_status()
+  sys.exit()
+
+get consequence of one line
+decoded = r.json()
+pprint (decoded[0]['most_severe_consequence'])
+
 
     #place holders for values
 	Gene = "NULL"
