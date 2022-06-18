@@ -133,7 +133,7 @@ API results
 
 
     #place holders for values
-	Gene = "NULL"
+	Gene = "NULL" #getting this next
 	#Type = "NULL"
 	#Effect = "NULL"
 
