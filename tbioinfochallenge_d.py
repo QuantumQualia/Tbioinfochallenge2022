@@ -5,7 +5,7 @@ Prototype variant annotation tool created for techinical challenge
 Author: duy
 
 -i vcf file
--o tsv or view in terminal
+-o tsv
 
 '''
 
@@ -88,39 +88,54 @@ def get_annotations(vcff):
 	except ValueError: #var percent >1 and catches records with multiple ALTS
 		varPercent = "valerr"
 
-	''' INCOMPLETE PARTS OF ASSIGNMENT
-	#4 VEP API..... not sure how to hand over a region from my VCF file to get
-	the values I want back but I'm assuming I can hand the API a position and
-	the ref/alt bases because vcf doesnt provide ID
-	Figured this out tentatively. It was due to my lack of domain knowledge for the format of HGVS-nomenclature.
-	https://varnomen.hgvs.org/ was very helpful.
+'''
+API results
+'''
+    server = "https://grch37.rest.ensembl.org"
+    ext = "/vep/human/hgvs"
+    headers={ "Content-Type" : "application/json", "Accept" : "application/json"}
+    chrom=["NC_000002.11","NC_000009.11"]
+    pos=["120885310","97209066"]
 
-	pasted from ensembl for reference
-	###
-	https://rest.ensembl.org/documentation/info/vep_region_post
+    for record in chrom:
+    #example inputs
+	r = requests.post(server+ext, headers=headers, data='{ "hgvs_notations" : ["NC_000009.11:g.97209066T>C","GL000192.1:g.160087C>T","MT:g.7965T>C","NC_000023.10:g.2724760T>C"] }')
 
-	#5 minor allele freq. was not sure how to tackle this one.
-	'''
 
-#gettting single
-server = "https://grch37.rest.ensembl.org" #not most recent assembly is the one we are referencing
-ext = "/vep/human/hgvs"
-headers={ "Content-Type" : "application/json", "Accept" : "application/json"}
-r = requests.post(server+ext, headers=headers, data='{ "hgvs_notations" : ["NC_000001.10:g.12776344A>T"] }') #single entry from test data for testing 
- 
-if not r.ok:
-  r.raise_for_status()
-  sys.exit()
+    if not r.ok:
+	r.raise_for_status()
+	sys.exit()
 
-get consequence of one line
-decoded = r.json()
-pprint (decoded[0]['most_severe_consequence'])
+
+    decoded = r.json()
+    #pprint (decoded)
+    #print("checking length")
+    #pprint(print(decoded[i]['colocated_variants'][0]))
+    for i,e in enumerate(decoded):
+	print (decoded[i]['most_severe_consequence'])
+	most_severe_consequence = decoded[i]['most_severe_consequence']
+	if 'colocated_variants' in decoded[i]:
+	    if len(decoded[i]['colocated_variants']) > 1:
+		if 'minor_allele' in decoded[i]['colocated_variants'][1]:
+		    print (decoded[i]['colocated_variants'][1]['minor_allele'])
+		    minor_allele = decoded[i]['colocated_variants'][1]['minor_allele']
+		else:
+		    minor_allele = "NULL"
+
+	if 'minor_allele_freq' in decoded[i]['colocated_variants'][1]:
+	    print (decoded[i]['colocated_variants'][1]['minor_allele_freq'])
+	    minor_allele_freq = decoded[i]['colocated_variants'][1]['minor_allele_freq']
+	else:
+	    minor_allele_freq = "NULL"
+	else:
+	    minor_allele = "NULL"
+	    minor_allele_freq = "NULL"
 
 
     #place holders for values
 	Gene = "NULL"
-	Type = "NULL"
-	Effect = "NULL"
+	#Type = "NULL"
+	#Effect = "NULL"
 
 	return f"{chrom}\t{pos}\t{varID}\t{Tdepth}\t{varReads}\t{varPercent}\t{Gene}\t{Type}\t{Effect}\n"
 
