@@ -23,9 +23,9 @@ The requests package will need to be installed to handle API calls
 
 First, you will want to split multiple alleles on to their own lines with the Asplitter script. This is optional but if you want to get the most out of your data from the VEP I'd recommend splitting the variant alleles first.
 Ex.
-'''
+```
 python3 pathto/Asplitter.py 'pathto/inputfile.txt' 'pathto/outputfile.txt'
-'''
+```
 
 Then your vcf data is ready to be annotated by the challenge script.
 Ex.
