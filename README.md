@@ -17,7 +17,7 @@ Even though VCF files are in a semi compressed(~100gb) in comparison to GFF file
 
 ## Installation
 At least Python3.6 is required due to f-String usage.
-The requests package will need to be installed to handle API calls
+The requests package will need to be installed to handle API calls.
 
 ## Usage
 
