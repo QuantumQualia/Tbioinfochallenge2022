@@ -34,4 +34,4 @@ python3 pathto/tbioinfochallenge_d.py -i 'pathto/inputfile2.txt' -o 'pathto/outp
 ```
 
 ## Credits
-Thanks to the Bioinformatics team at Tempus for allowing me to take a stab at a fun problem, even though I didn't complete it fully I learned a big on the way. Update: I have completed it in it's entirety and am asking for another review.
+Thanks to the Bioinformatics team at Tempus for allowing me to take a stab at a fun problem, even though I didn't complete it fully I learned a bit on the way. Update: I have completed it in it's entirety and am asking for another review.
